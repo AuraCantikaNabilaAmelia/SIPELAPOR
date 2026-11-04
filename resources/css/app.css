@@ -1,3 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    [x-cloak] {
+        display: none !important;
+    }
+
+    body {
+        @apply bg-paper text-ink-900 antialiased;
+        font-feature-settings: 'tnum' 1;
+    }
+
+    ::selection {
+        @apply bg-primary-100 text-primary-700;
+    }
+}
+
+@layer components {
+    .card {
+        @apply rounded-md border border-border bg-white;
+    }
+
+    .nav-item {
+        @apply flex items-center gap-3 rounded px-3 py-2 text-sm text-ink-700 transition hover:bg-primary-50 hover:text-primary-700;
+    }
+
+    .nav-item-active {
+        @apply bg-primary-50 text-primary-700 font-medium border-l-2 border-primary-500 -ml-0.5 pl-[calc(0.75rem-2px)];
+    }
+
+    .btn-primary {
+        @apply inline-flex items-center justify-center rounded border border-transparent bg-primary-500 px-4 py-2 text-sm font-medium text-white transition hover:bg-primary-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 disabled:opacity-50;
+    }
+
+    .btn-secondary {
+        @apply inline-flex items-center justify-center rounded border border-border bg-white px-4 py-2 text-sm font-medium text-ink-700 transition hover:bg-paper-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500;
+    }
+
+    .btn-danger {
+        @apply inline-flex items-center justify-center rounded border border-transparent bg-status-dikembalikan px-4 py-2 text-sm font-medium text-white transition hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-status-dikembalikan disabled:opacity-50;
+    }
+
+    .form-label {
+        @apply mb-1 block text-sm font-medium text-ink-700;
+    }
+
+    .form-control {
+        @apply rounded border-border text-sm text-ink-900 shadow-sm focus:border-primary-500 focus:ring-primary-500;
+    }
+
+    .badge {
+        @apply inline-flex items-center rounded-sm px-2 py-0.5 text-xs font-medium;
+    }
+
+    .badge-draft { @apply bg-status-draft-bg text-status-draft; }
+    .badge-diajukan_ke_ks { @apply bg-status-diajukan-bg text-status-diajukan; }
+    .badge-dikirim { @apply bg-status-dikirim-bg text-status-dikirim; }
+    .badge-dikembalikan { @apply bg-status-dikembalikan-bg text-status-dikembalikan; }
+    .badge-divalidasi { @apply bg-status-divalidasi-bg text-status-divalidasi; }
+
+    .alert {
+        @apply rounded border px-4 py-3 text-sm;
+    }
+
+    .alert-success { @apply border-status-divalidasi/30 bg-status-divalidasi-bg text-status-divalidasi; }
+    .alert-info { @apply border-primary-300 bg-primary-50 text-primary-700; }
+    .alert-warning { @apply border-status-diajukan/30 bg-status-diajukan-bg text-status-diajukan; }
+    .alert-danger { @apply border-status-dikembalikan/30 bg-status-dikembalikan-bg text-status-dikembalikan; }
+}
